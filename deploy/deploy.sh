@@ -6,7 +6,8 @@ REGION=us-central1
 CONN=${PROJECT}:${REGION}:forestai-rag-db
 SA=forestai-rag@${PROJECT}.iam.gserviceaccount.com
 IMAGE=${REGION}-docker.pkg.dev/${PROJECT}/forestai/forestai-rag:${TAG:-$(git rev-parse --short HEAD 2>/dev/null || date +%s)}
-ENV_VARS=GOOGLE_GENAI_USE_VERTEXAI=1,GOOGLE_CLOUD_PROJECT=${PROJECT},GOOGLE_CLOUD_LOCATION=${REGION}
+# Gemini models are served from the global endpoint; Cloud Run and Cloud SQL stay in REGION.
+ENV_VARS=GOOGLE_GENAI_USE_VERTEXAI=1,GOOGLE_CLOUD_PROJECT=${PROJECT},GOOGLE_CLOUD_LOCATION=global
 
 gcloud builds submit --project "$PROJECT" --tag "$IMAGE" .
 

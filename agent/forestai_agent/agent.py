@@ -42,7 +42,7 @@ def spatial_query(lat: float, lon: float, radius_km: float = 25.0) -> dict:
 
 
 root_agent = Agent(
-    model=os.getenv("GEN_MODEL", "gemini-2.5-flash"),
+    model=os.getenv("GEN_MODEL", "gemini-3.8-flash"),
     name="forestai_agent",
     description="Answers forest-health questions using the ForestAI corpus, with citations.",
     instruction=(

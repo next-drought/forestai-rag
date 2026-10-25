@@ -1,5 +1,5 @@
 models:
-  generation: gemini-2.5-flash      # confirm current model names before running
+  generation: gemini-3.8-flash      # check availability with scripts/probe_models.py
   embedding: gemini-embedding-001
   embedding_dim: 768                # must match sql/001_schema.sql
 chunking:
