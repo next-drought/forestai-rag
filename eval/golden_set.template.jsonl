@@ -1,0 +1,3 @@
+{"id": "q001", "question": "REPLACE: a question answerable from one document", "expected_sources": ["source_id"], "expected_facts": ["fact the answer must contain"], "type": "single-doc"}
+{"id": "q002", "question": "REPLACE: a question that needs two documents", "expected_sources": ["source_a", "source_b"], "expected_facts": ["..."], "type": "multi-doc"}
+{"id": "q003", "question": "REPLACE: a question the corpus cannot answer", "expected_sources": [], "expected_facts": [], "type": "should-refuse"}

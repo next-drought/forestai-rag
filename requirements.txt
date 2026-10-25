@@ -1,0 +1,14 @@
+google-genai
+google-adk
+google-cloud-logging
+psycopg[binary]>=3.1
+pgvector
+pyyaml
+python-dotenv
+pydantic>=2
+pypdf
+pandas
+pytest
+fastapi
+uvicorn[standard]
+firebase-admin

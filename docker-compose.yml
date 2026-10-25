@@ -1,0 +1,25 @@
+services:
+  db:
+    build: docker/db
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: forestai_rag
+    ports: ["5432:5432"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d:ro   # applies the schema on first start
+  api:
+    build: .
+    profiles: ["api"]
+    depends_on: [db]
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/forestai_rag
+      AUTH_DISABLED: "1"
+      GOOGLE_APPLICATION_CREDENTIALS: /gcloud/application_default_credentials.json
+    volumes:
+      - ~/.config/gcloud:/gcloud:ro
+      - ./data:/app/data:ro
+    ports: ["8080:8080"]
+volumes:
+  pgdata:

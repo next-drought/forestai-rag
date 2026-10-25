@@ -1,0 +1,17 @@
+models:
+  generation: gemini-2.5-flash      # confirm current model names before running
+  embedding: gemini-embedding-001
+  embedding_dim: 768                # must match sql/001_schema.sql
+chunking:
+  target_tokens: 400
+  overlap_tokens: 60
+  split_on: [heading, paragraph]
+retrieval:
+  top_k_vector: 20
+  top_k_keyword: 20
+  final_k: 6
+  rerank: false                     # enable after baseline eval
+  min_score: 0.0
+guardrails:
+  require_citations: true
+  refuse_out_of_scope: true
